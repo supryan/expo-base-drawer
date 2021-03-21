@@ -31,58 +31,19 @@ That's it. Now visit the Metro bundler in your browser and scan the QR code on a
 
 Here we're utilizing MobX to add cross-component state management. MobX is a very powerful framework that easily allows you to pass data efficiently and quickly throughout the entire app.
 
-#### App State Listeners
-
-We are already listening for app state changes and can be used in any component. We can use `DeviceEventEmitter` for this:
-
-```jsx
-this.eventListener = DeviceEventEmitter.addListener('app:state', handleAppState}
-
-// Later on unmount
-this.eventListener.remove();
-```
-
-### 🧭 Navigation
-
-**`NavigationService.js`** - Also included is the `NavigationService`, that you can import into any component and handle Navigation if react navigation's `props.navigation` are not available to you.
-
-```jsx
-import NavigationService from '../services/NavigationService';
-
-const Component = (route, params) => {
-  const currentRoute = NavigationService.getCurrentRoute(); // Current route
-
-  return (
-    <>
-      <Button onPress={() => NavigationService.navigate(route, params)} />
-      <Button onPress={() => NavigationService.goBack()} />
-    </>
-  );
-};
-```
-
-**Route Change Listening** - We can also listen for route changes to determine the current active route. You can use `DeviceEventEmitter` to properly receive these `app:change` events just like the App State Listeners
-
-```jsx
-this.eventListener = DeviceEventEmitter.addListener('route:change', handleRouteChange}
-
-// Later on unmount
-this.eventListener.remove();
-```
-
 ### 🧩 Notification System
 
 Thanks to the power of MobX, we include some custom made components for displaying global notifications and loaders in any component. Here's an example component on how to show the global loader. You must first inject the `NotificationStore` with MobX to your component. Then you can use `notifications` as a prop:
 
 ```jsx
-import { inject, observer } from 'mobx-react';
+import { observer } from 'mobx-react';
+import { useStores } from 'utils/hooks';
 
 // Uses NotificationStore.js
-const Component = inject('notifications')(
-  observer(({ notifications }) => {
-    return <Button onPress={() => notifications.showLoader()} />;
-  })
-);
+const Component = observer(({ notifications }) => {
+  const { notification } = useStores()
+  return <Button onPress={() => notifications.showLoader()} />;
+});
 ```
 
 #### Loader

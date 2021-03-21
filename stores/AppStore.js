@@ -16,6 +16,7 @@ export class AppStore {
         });
     }
 
+    // Any initializing you need to do on app start
     async init() {
         const storeAvailable = await SecureStore.isAvailableAsync();
 
