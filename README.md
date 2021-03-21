@@ -68,7 +68,7 @@ With the Snackbar, there are additional options you can set:
 
 | Options (obj) | Type    | Default | Description                                                                                    |
 | ------------- | ------- | ------- | ---------------------------------------------------------------------------------------------- |
-| `text`        | String  | `''`    | (required) The text to display on the Snackbar component                                       |
+| `message`        | String  | `''`    | (required) The text to display on the Snackbar component                                       |
 | `button`      | boolean | `false` | Option to display a button on the snackbar that goes to a route when clicked                   |
 | `route`       | String  | `''`    | If `button` option is set to true, set the route this button goes to when pressed              |
 | `params`      | Any     | `null`  | Optional params to pass when going to specified `route`                                        |
@@ -81,18 +81,6 @@ All theme properties are extended by `styled-components` and live in `/constants
 ```jsx
 // Further theming documentation coming soon. For more info check out constants/Theme.js
 ```
-
-### 📲 Additional Layout Options
-
-There are additional layout variables included in `/constants/Layout.js`. These variables include:
-
-- **`isSmallDevice`** - Device is less than or equal to 375px
-  wide
-- **`isSuperSmallDevice`** - Device is less than or equal to 320px wide
-- **`headerHeight`** - Get height of header area for device
-- **`statusBarHeight`** - Get device status bar height
-- **`device`** - Get the name of the current device type
-- **`getKeyboardOffset`** - Get height of the device keyboard
 
 ## Credits
 
