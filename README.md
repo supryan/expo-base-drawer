@@ -33,14 +33,14 @@ Here we're utilizing MobX to add cross-component state management. MobX is a ver
 
 ### 🧩 Notification System
 
-Thanks to the power of MobX, we include some custom made components for displaying global notifications and loaders in any component. Here's an example component on how to show the global loader. You must first inject the `NotificationStore` with MobX to your component. Then you can use `notifications` as a prop:
+Thanks to the power of MobX, we include some custom made components for displaying global notifications and loaders in any component. Here's an example component on how to show the global loader. You must first inject the `NotificationStore` with MobX to your component. Then you can use `notification` to pull in anything from that store:
 
 ```jsx
 import { observer } from 'mobx-react';
 import { useStores } from 'utils/hooks';
 
 // Uses NotificationStore.js
-const Component = observer(({ notifications }) => {
+const Component = observer(() => {
   const { notification } = useStores()
   return <Button onPress={() => notifications.showLoader()} />;
 });
