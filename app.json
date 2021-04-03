@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Never Better",
-    "slug": "never-better",
+    "name": "Expo Base Drawer",
+    "slug": "expo-base-drawer",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
