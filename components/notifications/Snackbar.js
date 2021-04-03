@@ -45,12 +45,12 @@ const SnackbarText = styled.Text`
     font-size: 18px;
     padding-vertical: ${({ theme }) => theme.spacing.bumper}px;
     padding-horizontal: ${({ theme }) => theme.spacing.sm}px;
-    text-align: ${props => (props.align ? 'left' : 'center')};
+    text-align: ${(props) => (props.align ? 'left' : 'center')};
     flex-shrink: 1;
     width: 100%;
 `;
 
-const SnackbarButton = styled(Button).attrs(props => ({
+const SnackbarButton = styled(Button).attrs((props) => ({
     containerStyle: {
         display: 'flex',
         height: '100%',
@@ -59,8 +59,8 @@ const SnackbarButton = styled(Button).attrs(props => ({
         paddingHorizontal: props.theme.spacing.s,
         paddingVertical: props.theme.spacing.bumper,
         flexGrow: 1,
-        flexBasis: 75
-    }
+        flexBasis: 75,
+    },
 }))`
     ${({ theme }) => theme.typography.button};
     color: ${({ theme }) => theme.colors.primaryContrast};
@@ -71,7 +71,7 @@ const SnackbarButton = styled(Button).attrs(props => ({
 
 const AnimatedSnackbarView = Animated.createAnimatedComponent(SnackbarView);
 
-export const Snackbar = ({ offset: tabsHeight = 0, delay = DELAY + 400, button = 'OK', message, route, onSnackBarHide }) => {
+export const Snackbar = ({ offset: tabsHeight = 0, delay = DELAY + 400, button = 'OK', message, onSnackBarHide }) => {
     const [height, setHeight] = useState(0);
     const [end] = useState(-TABBAR_MARGIN);
     const [start] = useState(Layout.statusBarHeight + 20 + (tabsHeight || 0));
@@ -93,7 +93,7 @@ export const Snackbar = ({ offset: tabsHeight = 0, delay = DELAY + 400, button =
             delay: 400,
             easing: Easing.out(Easing.cubic),
             duration: 400,
-            useNativeDriver: true
+            useNativeDriver: true,
         }).start(() => {
             snackbarTimeout = setTimeout(() => {
                 hide();
@@ -106,7 +106,7 @@ export const Snackbar = ({ offset: tabsHeight = 0, delay = DELAY + 400, button =
             toValue: 0,
             duration: 400,
             easing: Easing.in(Easing.cubic),
-            useNativeDriver: true
+            useNativeDriver: true,
         }).start(() => {
             onSnackBarHide();
         });
@@ -121,20 +121,20 @@ export const Snackbar = ({ offset: tabsHeight = 0, delay = DELAY + 400, button =
             pointerEvents="box-none"
             style={{
                 height: height + TABBAR_MARGIN + offset,
-                bottom: offset
+                bottom: offset,
             }}>
             <AnimatedSnackbarView
                 pointerEvents="box-none"
-                onLayout={event => setHeight(event.nativeEvent.layout.height)}
+                onLayout={(event) => setHeight(event.nativeEvent.layout.height)}
                 style={{
                     transform: [
                         {
                             translateY: snackbar.interpolate({
                                 inputRange: [0, 1],
-                                outputRange: [start, end]
-                            })
-                        }
-                    ]
+                                outputRange: [start, end],
+                            }),
+                        },
+                    ],
                 }}>
                 <SnackbarInnerView>
                     <SnackbarText align={button} numberOfLines={button ? 2 : 1} adjustsFontSizeToFit={true} minimumFontScale={0.7}>
@@ -164,5 +164,5 @@ Snackbar.propTypes = {
     route: PropTypes.string,
     delay: PropTypes.number,
     tabsHeight: PropTypes.number,
-    onSnackBarHide: PropTypes.func.isRequired
+    onSnackBarHide: PropTypes.func.isRequired,
 };

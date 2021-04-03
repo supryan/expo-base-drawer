@@ -59,7 +59,7 @@ With the Loader, there are additional options you can set:
 
 | Options (obj) | Type    | Default | Description                                                                      |
 | ------------- | ------- | ------- | -------------------------------------------------------------------------------- |
-| `overlay`     | boolean | `false` | Display a dark overlay behind the loader (prevents background from being tapped) |
+| `overlay`     | Boolean | `false` | Display a dark overlay behind the loader (prevents background from being tapped) |
 
 #### Snackbar
 
@@ -75,7 +75,7 @@ With the Snackbar, there are additional options you can set:
 | Options (obj) | Type    | Default | Description                                                                                    |
 | ------------- | ------- | ------- | ---------------------------------------------------------------------------------------------- |
 | `message`     | String  | `''`    | (required) The text to display on the Snackbar component                                       |
-| `button`      | boolean | `false` | Option to display a button on the snackbar that goes to a route when clicked                   |
+| `button`      | Boolean | `false` | Option to display a button on the snackbar that goes to a route when clicked                   |
 | `offset`      | Number  | `0`     | Set an optional offset to position the Snackbar higher (helpful for tab bars or fixed footers) |
 
 ### 🎨Theming

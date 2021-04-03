@@ -4,8 +4,8 @@ import { Asset } from 'expo-asset';
 // Media
 export const Assets = {
     icons: {
-        logo: require('../assets/icon.png')
-    }
+        logo: require('../assets/icon.png'),
+    },
 };
 
 // Fonts
@@ -15,7 +15,6 @@ export const Fonts = {
     'proxima-semibold': require('../assets/fonts/ProximaNova/ProximaNova-Semibold.otf'),
     'proxima-bold': require('../assets/fonts/ProximaNova/ProximaNova-Bold.otf'),
     'proxima-black': require('../assets/fonts/ProximaNova/ProximaNova-Black.otf'),
-    'optician-sans': require('../assets/fonts/OpticianSans/Optician-Sans.otf')
 };
 
 // Primarily used on app initialization for gathering assets and caching
@@ -23,8 +22,8 @@ export const Fonts = {
 // See App.js _loadResourcesAsync()
 export const getCachedAssets = async () => {
     const promises = Object.keys(Assets)
-        .map(keys => flatten(Assets[keys]))
+        .map((keys) => flatten(Assets[keys]))
         .flat()
-        .map(asset => Asset.fromModule(asset).downloadAsync());
+        .map((asset) => Asset.fromModule(asset).downloadAsync());
     return promises;
 };
