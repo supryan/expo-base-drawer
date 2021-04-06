@@ -1,6 +1,5 @@
 import { observable, action, computed, toJS, when, makeAutoObservable, runInAction } from 'mobx';
-import { observer } from 'mobx-react';
-import config from '../constants/Config'
+import config from '../constants/Config';
 import { generateId } from '../utils/helpers';
 
 export class NotificationStore {
@@ -21,7 +20,7 @@ export class NotificationStore {
         makeAutoObservable(this, {
             loader: observable,
             snacks: observable,
-            alert: observable,
+            alert: observable.ref,
             showLoader: action.bound,
             hideLoader: action.bound,
             showSnackbar: action.bound,
@@ -82,14 +81,19 @@ export class NotificationStore {
     }
 
     hideAlert() {
-        this.alert.active = false;
+        runInAction(() => {
+            this.alert = {
+                ...this.alert,
+                active: false,
+            };
 
-        // Remove all other data
-         setTimeout(() => {
-             runInAction(() => {
-                 this.alert = { active: false };
-             })
-         }, 500);
+            // Remove all other data
+            setTimeout(() => {
+                runInAction(() => {
+                    this.alert = { active: false };
+                });
+            }, 500);
+        });
     }
 
     get getLoader() {
